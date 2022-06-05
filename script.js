@@ -6,7 +6,7 @@ var pogodaburza = new Audio("burza.mp3")
 var pogodadeszcz = new Audio("deszcz.mp3")
 
 function pogoda(){
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+miasto.value+'&appid=b10a402bac1e4255c1f1a7e4a11f9ba0&units=metric')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+miasto.value+'&appid=MY_API&units=metric')
    .then(function(odpowiedz){
        return odpowiedz.json();
    })
