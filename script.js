@@ -3,9 +3,12 @@
 var miasto = document.getElementsByClassName('city')[0];
 var celciusze = document.getElementsByClassName('temp')[0];
 var Fahrenheit = document.getElementsByClassName('temp')[1];
-var pogadaladna = new Audio("ptaki.mp3")
-var pogodaburza = new Audio("burza.mp3")
-var pogodadeszcz = new Audio("deszcz.mp3")
+var cisnienie = document.getElementsByClassName('dod')[0];
+var wilgotnosc = document.getElementsByClassName('dod')[1];
+var wiatr = document.getElementsByClassName('dod')[2];
+var pogadaladna = new Audio("ptaki.mp3");
+var pogodaburza = new Audio("burza.mp3");
+var pogodadeszcz = new Audio("deszcz.mp3");
 
 function pogoda(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+miasto.value+'&appid=API&units=metric')
@@ -30,9 +33,21 @@ function pogoda(){
                 document.getElementsByClassName('tekst')[1].innerHTML = "Zimno, temperatura wynosi"+" "+ parseInt(json['main']['temp']*1.8 + 32)+" "+"F";
             }
         }
-        document.getElementsByClassName('tekst')[2].innerHTML = "Wiatr" +" "+ json['wind']['speed']+" "+"m/s";
-        document.getElementsByClassName('tekst')[3].innerHTML = "Wilgotność" +" "+ json['main']['humidity']+" "+"%";
-        document.getElementsByClassName('tekst')[4].innerHTML = "Ciśnienie" +" "+ json['main']['pressure']+" "+"hPa";
+        if(wiatr.checked){
+            document.getElementsByClassName('tekst')[2].innerHTML = "Wiatr:" +" "+ json['wind']['speed']+" "+"m/s";
+        }else{
+            document.getElementsByClassName('tekst')[2].innerHTML = "Wiatr: Nie wybrano";
+        }
+        if(wilgotnosc.checked){
+        document.getElementsByClassName('tekst')[3].innerHTML = "Wilgotność:" + " " + json['main']['humidity']+" "+"%";
+        }else{
+            document.getElementsByClassName('tekst')[3].innerHTML = "Wilgotność: Nie wybrano";
+        }
+        if(cisnienie.checked){
+        document.getElementsByClassName('tekst')[4].innerHTML = "Ciśnienie:" + " " +json['main']['pressure']+" "+"hPa";
+        }else{
+            document.getElementsByClassName('tekst')[4].innerHTML = "Ciśnienie: Nie wybrano";
+        }
         if(json['weather'][0]['main'] == "Clear"){
             pogodadeszcz.pause();
             pogodaburza.pause();
