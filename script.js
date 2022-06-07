@@ -1,12 +1,14 @@
 
 
 var miasto = document.getElementsByClassName('city')[0];
+var celciusze = document.getElementsByClassName('temp')[0];
+var Fahrenheit = document.getElementsByClassName('temp')[1];
 var pogadaladna = new Audio("ptaki.mp3")
 var pogodaburza = new Audio("burza.mp3")
 var pogodadeszcz = new Audio("deszcz.mp3")
 
 function pogoda(){
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+miasto.value+'&appid=MY_API&units=metric')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+miasto.value+'&appid=API&units=metric')
    .then(function(odpowiedz){
        return odpowiedz.json();
    })
@@ -15,9 +17,18 @@ function pogoda(){
         var pogodaChmury = json['name']
         document.getElementsByClassName('tekst')[0].innerHTML = pogodaChmury
         if(parseInt(json['main']['temp']) > 23){
+            if(celciusze.checked){
             document.getElementsByClassName('tekst')[1].innerHTML = "Ciepło, temperatura wynosi" +" "+ json['main']['temp']+" "+ "°C";
+            }else if(Fahrenheit.checked){
+                document.getElementsByClassName('tekst')[1].innerHTML = "Ciepło, temperatura wynosi" +" "+ parseInt(json['main']['temp']*1.8 + 32)+" "+ "F";
+            }
         }else{
+            if(celciusze.checked){
             document.getElementsByClassName('tekst')[1].innerHTML = "Zimno, temperatura wynosi"+" "+ json['main']['temp']+" "+"°C";
+            }
+            else if(Fahrenheit.checked){
+                document.getElementsByClassName('tekst')[1].innerHTML = "Zimno, temperatura wynosi"+" "+ parseInt(json['main']['temp']*1.8 + 32)+" "+"F";
+            }
         }
         document.getElementsByClassName('tekst')[2].innerHTML = "Wiatr" +" "+ json['wind']['speed']+" "+"m/s";
         document.getElementsByClassName('tekst')[3].innerHTML = "Wilgotność" +" "+ json['main']['humidity']+" "+"%";
