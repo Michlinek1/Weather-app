@@ -9,6 +9,12 @@
     <title>Weather-app</title>
 </head>
 <body>
+    <details>
+<summary>Opcje</summary>
+<p>Temperatura:</p>
+        <input type = 'radio' class = 'temp' name = 'temperatura' value = 'c' checked>Celsjusz</input><br>
+        <input type = 'radio' class = 'temp' name = 'temperatura' value = 'c' checked>Fahrenheit</input>
+    </details>
 <div class= 'container'>
     <input type="text" class="city" placeholder="Podaj miasto"> <br>
     <button class = 'btn' onclick = 'pogoda()'>Pokaż pogodę</button> <br>
@@ -18,7 +24,7 @@
     <h1 class = 'tekst'></h1>
     <h1 class = 'tekst'></h1>
     </div>
+
     <script  src = 'script.js'></script>
-</script>
 </body>
 </html>
