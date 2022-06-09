@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konwertuj</title>
+    <link rel = 'stylesheet' href = 'style.css'>
+</head>
+<body>
+<details>
+    <summary>Opcje</summary>
+
+<p>Temperatura:</p>
+        <input type = 'radio' class = 'przecinki' name = 'temperatura' value = 'c' checked>Bez miejsc po przecinku</input><br>
+        <input type = 'radio' class = 'przecinki' name = 'temperatura' value = 'c' checked>Z miejscami</input>
+</details>
+    <div class= 'container'>
+    <input type="text" class="konwerter" placeholder="Podaj temperature w celcjuszach"> <br>
+    <p class = 'zamienianie'>&#8597;</p>
+    <input type="text" class="konwerter" placeholder="Wynik" readonly> <br>
+    <button class = 'btn' onclick = 'konwerter()'>Konwertuj!</button> <br>
+    <button class = 'btn' onclick = 'window.location.href = "index.html"'>Pokaż pogodę</button> <br>
+    <button class = 'btn' onclick = 'window.location.href = "index.html"''>Pogoda za pomocą lokalizacji</button> <br>
+
+    </div>
+    <script src = 'script.js'></script>
+</body>
+</html>
